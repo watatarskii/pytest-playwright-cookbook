@@ -8,10 +8,9 @@ class LoginPage(BasePage):
     def __init__(self, page: Page) -> None:
         super().__init__(page)
         # Define locators as attributes — easy to update in one place
-        self.email_input = page.get_by_label("Email")
-        self.password_input = page.get_by_label("Password")
-        self.submit_button = page.get_by_role("button", name="Sign in")
-        self.error_message = page.get_by_role("alert")
+        self.email_input = page.get_by_test_id("email")
+        self.password_input = page.get_by_test_id("password")
+        self.submit_button = page.get_by_role("button", name="Anmelden")
 
     def open(self) -> "LoginPage":
         self.page.goto(self.URL)
