@@ -1,0 +1,5 @@
+[
+  {"email": "admin@example.com", "password": "adminpass", "expected_page": "/admin"},
+  {"email": "user@example.com", "password": "userpass", "expected_page": "/dashboard"},
+  {"email": "viewer@example.com", "password": "viewpass", "expected_page": "/view"}
+]
