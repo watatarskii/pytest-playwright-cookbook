@@ -1,5 +1,6 @@
 import pytest
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
+from playwright.sync_api import Browser, BrowserContext
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 
@@ -7,6 +8,8 @@ from pages.dashboard_page import DashboardPage
 def test_successful_login(page: Page) -> None:
     login_page = LoginPage(page)
     login_page.open()
+    assert login_page.email_input.is_visible(), "Email input should be visible on login page"
+    assert login_page.password_input.is_visible(), "Password input should be visible on login page"
     login_page.login("user@example.com", "correct_password")
 
     dashboard = DashboardPage(page)
