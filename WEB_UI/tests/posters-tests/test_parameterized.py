@@ -44,8 +44,8 @@ from pathlib import Path
 
 
 def load_users():
-    data = json.loads(Path("C:\\Users\\laptev\\source\\repos\\pytest-playwright-cookbook\\WEB_UI\\data\\users.json").read_text())
-    return [(u["email"], u["password"], u["expected_page"]) for u in data]
+    data = json.loads(Path("..\\pytest-playwright-cookbook\\WEB_UI\\data\\users.json").read_text())
+    return [(u["email"], u["password"], u["name"], u["surname"]) for u in data]
 
 
 @pytest.mark.parametrize("email,password,expected_url", load_users())

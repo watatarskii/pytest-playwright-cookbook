@@ -51,7 +51,8 @@ def test_user():
     return {
         "email": "testuser@example.com",
         "password": "password123",
-        "name": "Test User",
+        "name": "Test",
+        "surname": "User",
     }
 
 
