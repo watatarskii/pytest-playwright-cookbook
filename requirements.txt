@@ -4,3 +4,4 @@ playwright
 pytest-html
 python-dotenv
 faker
+allure-pytest
