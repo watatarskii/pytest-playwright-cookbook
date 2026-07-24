@@ -2,7 +2,7 @@
 Cross-platform path utilities for test data loading.
 """
 import platform
-from pathlib import Path, PureWindowsPath, PurePosixPath
+from pathlib import Path
 
 
 class PathFactory:
@@ -40,9 +40,8 @@ class PathFactory:
         """
         current_os = PathFactory.get_platform()
         
-        # Get the directory containing this file
-        test_root = Path(__file__).parent
-        project_root = test_root.parent.parent
+        # Get the project root (where this conftest.py is located)
+        project_root = Path(__file__).parent
         
         if current_os == "windows":
             # Use Windows path format with backslashes
