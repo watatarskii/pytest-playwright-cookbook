@@ -41,10 +41,24 @@ def test_login_validation(page: Page, email: str, password: str, expected_error:
 
 import json
 from pathlib import Path
+import sys
+
+# Add parent directories to path to import conftest utilities
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from conftest import PathFactory
 
 
 def load_users():
-    data = json.loads(Path("..\\pytest-playwright-cookbook\\WEB_UI\\data\\users.json").read_text())
+    """Load user test data from JSON file using cross-platform path resolution."""
+    data_path = PathFactory.get_test_data_path("WEB_UI/data/users.json")
+    
+    if not PathFactory.validate_path_exists(data_path):
+        raise FileNotFoundError(
+            f"Test data file not found: {data_path}\n"
+            f"Current OS: {PathFactory.get_platform()}"
+        )
+    
+    data = json.loads(data_path.read_text())
     return [(u["email"], u["password"], u["name"], u["surname"]) for u in data]
 
 
